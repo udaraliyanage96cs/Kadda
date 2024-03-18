@@ -13,11 +13,11 @@ const { getFirestore } = require("firebase/firestore");
 const firebaseConfig = {
   apiKey: process.env.FIREBASE_API_KEY,
   authDomain: process.env.FIREBASE_AUTH_DOMAIN,
-  projectId: "kadda-a8ec8",
-  storageBucket: "kadda-a8ec8.appspot.com",
-  messagingSenderId: "50706127242",
-  appId: "1:50706127242:web:896ca8522e7b96538d1073",
-  measurementId: "G-ZY8ZX7BPF7"
+  projectId: "kadda-2",
+  storageBucket: "kadda-2.appspot.com",
+  messagingSenderId: "760461522712",
+  appId: "1:760461522712:web:cef81cccf4ee15f981106d",
+  measurementId: "G-3WE93XF8PE"
 };
 
 const apps = initializeApp(firebaseConfig);
