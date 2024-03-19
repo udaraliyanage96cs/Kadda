@@ -56,10 +56,10 @@ async function addUserToFirestore(userId,message,response) {
     dbTable = "UsersData";
   }
   const docRef = await addDoc(collection(db, dbTable), {
-    userId: userId,
-    message:message,
-    response:response,
-    datetime: currentTime
+    userId: userId || null,
+    message:message || null,
+    response:response || null,
+    datetime: currentTime || null
   });
   console.log("Document written with ID: ", docRef.id);
 }
