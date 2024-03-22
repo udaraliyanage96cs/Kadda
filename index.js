@@ -93,9 +93,9 @@ bot.on("message", async (msg) => {
     }else{
       response = await textOnly(msg.text);
       if (msg.chat.type === "private") {
-        bot.sendMessage(chatId, `${response}`);
+        bot.sendMessage(chatId, `${response}` , { parse_mode: 'MarkdownV2' });
       } else if (msg.chat.type === "group" || msg.chat.type === "supergroup") {
-        bot.sendMessage( chatId, `Hello, group members! Someone said: ${msg.text}` );
+        bot.sendMessage( chatId, `Hello, group members! Someone said: ${msg.text}` , { parse_mode: 'MarkdownV2' } );
       }
       sendDataMiddleware(chatId,msg.text,response);
     }
