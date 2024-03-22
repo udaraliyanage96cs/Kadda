@@ -53,15 +53,25 @@ async function addUserToFirestore(userId,message,response) {
   if(userId == "6300187372"){
     dbTable = "myData";
   }else{
-    dbTable = "UsersData";
+      dbTable = "UsersData";
   }
-  const docRef = await addDoc(collection(db, dbTable), {
-    userId: userId || null,
-    message:message || null,
-    response:response || null,
-    datetime: currentTime || null
-  });
-  console.log("Document written with ID: ", docRef.id);
+
+  if(message == "/start"){
+    const docRef = await addDoc(collection(db, "NewUser"), {
+      userId: userId || null,
+      datetime: currentTime || null
+    });
+    console.log("Document written with ID: ", docRef.id);
+  }else{
+    const docRef = await addDoc(collection(db, dbTable), {
+      userId: userId || null,
+      message:message || null,
+      response:response || null,
+      datetime: currentTime || null
+    });
+    console.log("Document written with ID: ", docRef.id);
+  }
+  
 }
 
 
@@ -93,9 +103,9 @@ bot.on("message", async (msg) => {
     }else{
       response = await textOnly(msg.text);
       if (msg.chat.type === "private") {
-        bot.sendMessage(chatId, `${response}` , { parse_mode: 'MarkdownV2' });
+        bot.sendMessage(chatId, `${response}`);
       } else if (msg.chat.type === "group" || msg.chat.type === "supergroup") {
-        bot.sendMessage( chatId, `Hello, group members! Someone said: ${msg.text}` , { parse_mode: 'MarkdownV2' } );
+        bot.sendMessage( chatId, `Hello, group members! Someone said: ${msg.text}`);
       }
       sendDataMiddleware(chatId,msg.text,response);
     }
